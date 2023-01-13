@@ -7,7 +7,7 @@ type RatingPropstType = {
 export function Rating(props: RatingPropstType) {
     console.log('Rating rendering')
 
-    if (props.value === 1) {
+/*    if (props.value === 1) {
         return (
             <div>
                 <Star selected={true}/>
@@ -17,7 +17,7 @@ export function Rating(props: RatingPropstType) {
                 <Star selected={false}/>
             </div>
         )
-    }
+    }*/
     if (props.value === 2) {
         return (
             <div>
