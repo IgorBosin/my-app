@@ -1,51 +1,36 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
 export function RatingUncontrolled() {
 
-    let [value, setValue] = useState(0)
+    let [value, setValue] = useState(2)
 
-    const changeStar = (num: number) => {
+    const changeStarValue = (num: number) => {
         setValue(num)
     }
 
     return (
         <div>
-            <Star selected={value > 0} changeStar={changeStar} current={1}/>
-            <Star selected={value > 1} changeStar={changeStar} current={2}/>
-            <Star selected={value > 2} changeStar={changeStar} current={3}/>
-            <Star selected={value > 3} changeStar={changeStar} current={4}/>
-            <Star selected={value > 4} changeStar={changeStar} current={5}/>
-            {/*<span onClick={() => onClickChangeStarHandler(1)}><Star selected={value > 0}/></span>*/}
-            {/*<span onClick={() => onClickChangeStarHandler(2)}><Star selected={value > 1}/></span>*/}
-            {/*<span onClick={() => onClickChangeStarHandler(3)}><Star selected={value > 2}/></span>*/}
-            {/*<span onClick={() => onClickChangeStarHandler(4)}><Star selected={value > 3}/></span>*/}
-            {/*<span onClick={() => onClickChangeStarHandler(5)}><Star selected={value > 4}/></span>*/}
-            {/*<Star selected={value > 0}/> <button onClick={()=>onClickChangeStarHandler(1)}>1</button>*/}
-            {/*<Star selected={value > 1}/> <button onClick={()=>onClickChangeStarHandler(2)}>2</button>*/}
-            {/*<Star selected={value > 2}/> <button onClick={()=>onClickChangeStarHandler(3)}>3</button>*/}
-            {/*<Star selected={value > 3}/> <button onClick={()=>onClickChangeStarHandler(4)}>4</button>*/}
-            {/*<Star selected={value > 4}/> <button onClick={()=>onClickChangeStarHandler(5)}>5</button>*/}
+            <Star selected={value > 0} changeStar={() => changeStarValue(1)}/>
+            <Star selected={value > 1} changeStar={() => changeStarValue(2)}/>
+            <Star selected={value > 2} changeStar={() => changeStarValue(3)}/>
+            <Star selected={value > 3} changeStar={() => changeStarValue(4)}/>
+            <Star selected={value > 4} changeStar={() => changeStarValue(5)}/>
         </div>
     )
 }
 
 type StarPropsType = {
     selected: boolean
-    changeStar: (num: number) => void
-    current: number
+    changeStar: () => void // () => changeStarValue(1)
 }
 
 function Star(props: StarPropsType) {
 
-    const onClickChangeStarHandler = (num: number) => {
-        props.changeStar(num)
-    }
+    const onClickChangeStarHandler = () => props.changeStar()
+
     return (
-        props.selected
-            ? <span onClick={() => onClickChangeStarHandler(props.current)}><b> star </b></span>
-            : <span onClick={() => onClickChangeStarHandler(props.current)}> star </span>
+        <span onClick={onClickChangeStarHandler}>
+                    {props.selected ? <b> star </b> : 'star '}
+        </span>
     )
 }
-
-
-
