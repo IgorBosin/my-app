@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion";
-import {Rating} from "./components/Rating/Rating";
 import OnOff from "./components/OnOff/OnOff";
-import AccordionUncontrolled from "./components/Accordion/AccordionUncontrolled";
-import {RatingUncontrolled} from "./components/Rating/RatingUncontrolled";
 import OnOffUncontrolled from "./components/OnOff/OnOffUncontrolled";
 
 function App() {
@@ -15,8 +11,8 @@ function App() {
 
     return (
         <div>
-            {/*<OnOff/>*/}
-            <OnOffUncontrolled onOff={onOff} setOnOff={setOnOff}/>
+            <OnOffUncontrolled/>
+            <OnOff onOff={onOff}  setOnOff={setOnOff}/>
             {/*<PageTitle title={'This is APP component'}/>*/}
             {/*<PageTitle title={'My friends'}/>*/}
 
