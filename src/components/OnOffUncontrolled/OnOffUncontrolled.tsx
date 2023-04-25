@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 
-const OnOffUncontrolled = () => {
+type PropsType = {
+    onChange: (on:boolean)=>void
+    defaultOn?: boolean
+}
 
-    let [on, setOn] = useState(true)
+const OnOffUncontrolled = (props:PropsType) => {
+
+    let [on, setOn] = useState(props.defaultOn ? props.defaultOn : false)
 
     const onStyle = {
         padding: '3px',
@@ -29,8 +34,8 @@ const OnOffUncontrolled = () => {
 
     return (
         <div>
-            <div style={onStyle} onClick={() => setOn(true)}>ON</div>
-            <div style={offStyle} onClick={() => setOn(false)}>OFF</div>
+            <div style={onStyle} onClick={() => props.onChange(true)}>ON</div>
+            <div style={offStyle} onClick={() => props.onChange(false)}>OFF</div>
             <div style={indicatorStyle}></div>
         </div>
 
