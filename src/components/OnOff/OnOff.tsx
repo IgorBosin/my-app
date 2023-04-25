@@ -5,7 +5,7 @@ type OnOffPropsType = {
     setOnOff: (onOff: boolean) => void
 }
 
-const OnOff = (props: OnOffPropsType) => {
+export const OnOff = (props: OnOffPropsType) => {
 
     const onStyle = {
         padding: '3px',
@@ -50,5 +50,3 @@ const OnOff = (props: OnOffPropsType) => {
 
     );
 };
-
-export default OnOff;

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
-import OnOff from "./components/OnOff/OnOff";
-import OnOffUncontrolled from "./components/OnOff/OnOffUncontrolled";
+import {Rating} from "./components/Rating/Rating";
+import {OnOff} from "./components/OnOff/OnOff";
+import Accordion from "./components/Accordion/Accordion";
 
 function App() {
 
@@ -11,19 +12,18 @@ function App() {
 
     return (
         <div>
-            <OnOffUncontrolled/>
+            {/*<OnOffUncontrolled/>*/}
             <OnOff onOff={onOff}  setOnOff={setOnOff}/>
             {/*<PageTitle title={'This is APP component'}/>*/}
             {/*<PageTitle title={'My friends'}/>*/}
 
-            {/*<Accordion titleValue={'Menu'} setCollapsed={setCollapsed} collapsed={collapsed}/>*/}
-            {/*<Accordion titleValue={'Users'} collapsed={false}/>*/}
+            <Accordion titleValue={'Menu'} setCollapsed={setCollapsed} collapsed={collapsed}/>
 
             {/*<AccordionUncontrolled titleValue={'Menu unControlled'}/>*/}
             {/*<AccordionUncontrolled titleValue={'Users unControlled'}/>*/}
 
             {/*<RatingUncontrolled/>*/}
-            {/*<Rating value={ratingValue} setRatingValue={setRatingValue}/>*/}
+            <Rating ratingValue={ratingValue} setRatingValue={setRatingValue}/>
             {/*<Rating value={0}/>*/}
             {/*<Rating value={1}/>*/}
             {/*<Rating value={2}/>*/}

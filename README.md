@@ -8,4 +8,5 @@
 8. 07 - Контролируемые\неконтролируемые компоненты
 9. 08 - callback 
 10. 09 - callback
+11. 10 - storybook (удалить node_modules -> npx storybook@next init -> старт через панель npm storybook )
 
