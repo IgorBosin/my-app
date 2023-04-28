@@ -1,4 +1,5 @@
-import React, {useRef, RefObject, useState} from "react";
+import React, {useRef, RefObject, useState, ChangeEvent} from "react";
+import {action} from "@storybook/addon-actions";
 
 export default {
     title: 'Input',
@@ -39,3 +40,36 @@ export const GetValueOfUncontrolledInputUsingGetElementById = () => {
     </>
 }
 export const ControlledInputWithFixedValue = () => <input value={'Igor'}/>
+
+export const ControlledInput = () => {
+    const [parentValue, setParentValue] = useState('')
+    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+        debugger
+        setParentValue(e.currentTarget.value)
+    }
+    return <input value={parentValue} onChange={onChangeHandler}/>
+}
+
+export const ControlledChecked = () => {
+    const [parentValue, setParentValue] = useState(true)
+    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+        debugger
+        setParentValue(e.currentTarget.checked)
+    }
+    return <input type={'checkbox'} checked={parentValue} onChange={onChangeHandler}/>
+}
+
+export const ControlledSelect = () => {
+    const [parentValue, setParentValue] = useState<string | undefined>('2')
+    const onChangeHandler = (e:ChangeEvent<HTMLSelectElement>)=>{
+        debugger
+        setParentValue(e.currentTarget.value)
+    }
+    return <select value={parentValue} onChange={onChangeHandler}>
+        <option>none</option>
+        <option value="1">Igor</option>
+        <option value="2">Mery</option>
+        <option value="3">Leha</option>
+
+    </select>
+}

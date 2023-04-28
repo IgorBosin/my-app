@@ -11,4 +11,5 @@
 11. 10 - storybook (удалить node_modules -> npx storybook@next init -> старт через панель npm storybook )
 12. 11 - storybook (uncontrolled components, default value)
 13. 12 - uncontrolled input (storybook. useRef, onChange, getElementById)
+14. 13 - controlled input, FLUX (storybook. input, checkbox, select)
 
