@@ -17,9 +17,9 @@ export const GetValueOfUncontrolledInputUsingUseRef = () => {
     const [value, setValue] = useState('')
     const inputRef: RefObject<HTMLInputElement> = useRef(null)
     const onClickHandler = () => {
-        if (inputRef.current) {                          // 1 вариант
-            setValue(inputRef.current.value)             // 1 вариант
-        }                                                // 1 вариант
+        // if (inputRef.current) {                          // 1 вариант
+        //     setValue(inputRef.current.value)             // 1 вариант
+        // }                                                // 1 вариант
         const el = inputRef.current as HTMLInputElement  // 2 вариант
         setValue(el.value)                               // 2 вариант
     }
@@ -43,7 +43,7 @@ export const ControlledInputWithFixedValue = () => <input value={'Igor'}/>
 
 export const ControlledInput = () => {
     const [parentValue, setParentValue] = useState('')
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         debugger
         setParentValue(e.currentTarget.value)
     }
@@ -52,7 +52,7 @@ export const ControlledInput = () => {
 
 export const ControlledChecked = () => {
     const [parentValue, setParentValue] = useState(true)
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         debugger
         setParentValue(e.currentTarget.checked)
     }
@@ -61,7 +61,7 @@ export const ControlledChecked = () => {
 
 export const ControlledSelect = () => {
     const [parentValue, setParentValue] = useState<string | undefined>('2')
-    const onChangeHandler = (e:ChangeEvent<HTMLSelectElement>)=>{
+    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         debugger
         setParentValue(e.currentTarget.value)
     }
