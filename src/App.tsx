@@ -31,8 +31,8 @@ function App() {
 
             {/*<Accordion onClickItems={x=>x} items={itemsForAccordion} titleValue={'Menu'} setCollapsed={setCollapsed} collapsed={collapsed}/>*/}
 
-            {/*<AccordionUncontrolled titleValue={'Menu unControlled'}/>*/}
-            {/*<AccordionUncontrolled titleValue={'Users unControlled'}/>*/}
+            <AccordionUncontrolled titleValue={'Menu unControlled'}/>
+            <AccordionUncontrolled titleValue={'Users unControlled'}/>
 
             {/*<RatingUncontrolled onChange={setRatingValue}/>*/}
             {/*<Rating ratingValue={ratingValue} setRatingValue={setRatingValue}/>*/}
