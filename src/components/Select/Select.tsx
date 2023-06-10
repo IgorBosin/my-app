@@ -1,66 +1,80 @@
-import React, {useRef, useState, FocusEvent, useEffect} from "react";
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
-import {Box} from "@mui/material";
+import React, {useState, KeyboardEvent, useEffect} from 'react';
+import s from './Select.module.css'
 
 type ItemType = {
     title: string
     value: any
 }
 
-type SelectPropsType = {
+type Select2PropsType = {
+    value?: any
+    onChange: (value: any) => void
     items: ItemType[]
-    setCollapsed: (collapsed: boolean) => void
-    collapsed: boolean
 }
 
-export function Select(props: SelectPropsType) {
+export const SelectSecret = (props: Select2PropsType) => {
+    console.log('render Select')
 
-    const [header, setHeader] = useState('Name')
-    const menuRef = useRef<HTMLDivElement | null> (null)
-    const onClickHandler = (title: string) => {
-        setHeader(title.toUpperCase())
+    const [active, setActive] = useState(true)
+    const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
+
+    const selectedItem = props.items.find(i => i.value === props.value)
+    const howeredItem = props.items.find(i => i.value === hoveredElementValue)
+
+    const toggleItems = () => setActive(!active)
+
+    const onItemClick = (value: any) => {
+        props.onChange(value);
+        toggleItems()
     }
 
-    const onBlurHandler = (e:FocusEvent<HTMLDivElement, Element>) => {
-        props.setCollapsed(false)
-    };
-    useEffect(()=>{
-        const clickHandler = (e: MouseEvent) => {
-           if (menuRef.current) {
-              if (e.target !== menuRef.current.firstChild){
-                  props.setCollapsed(false)
-              }
-           }
-        }
+    useEffect(() => {
+        setHoveredElementValue(props.value)
+    }, [props.value])
 
-        document.addEventListener('click', clickHandler)
-        return () => {
-            document.removeEventListener('click', clickHandler)
+    const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            for (let i = 0; i < props.items.length; i++) {
+                if (props.items[i].value === hoveredElementValue) {
+                    const pretendentElement = e.key === 'ArrowDown'
+                        ? props.items[i + 1]
+                        : props.items[i - 1]
+                    if (pretendentElement) {
+                        props.onChange(pretendentElement.value)
+                        return
+                    }
+                }
+            }
+            if (!selectedItem) {
+                props.onChange(props.items[0].value)
+            }
         }
-    },[])
+        if (e.key === 'Enter' || e.key === 'Escape') {
+            setActive(false)
+        }
+    }
 
     return (
-        <Box sx={{width: 120,marginLeft: 'auto',marginRight: 'auto'}}>
-            {/*<FormControl fullWidth>*/}
-                {/*<InputLabel variant="standard" htmlFor="uncontrolled-native">*/}
-
-                {/*</InputLabel>*/}
-                {/*<NativeSelect defaultValue={1}>*/}
-                {/*    {props.items.map(el=>{*/}
-                {/*        return(*/}
-                {/*            <option  onClick={(e) => onClickHandler(el.title)} value={el.value}>{el.title}</option>*/}
-                {/*        )*/}
-                {/*    })}*/}
-                {/*</NativeSelect>*/}
-            <div ref={menuRef}>
-                <div style={{fontWeight:"bold"}} onClick={() => props.setCollapsed(!props.collapsed)}>{header}</div>
-                {props.collapsed && props.items.map(i => <option value={i.value}
-                                                                 onClick={(e) => onClickHandler(i.title)}>{i.title}</option>)}
+        <>
+            <div className={s.select} onKeyUp={onKeyUp} tabIndex={0}>
+                <span className={s.main} onClick={toggleItems}>{selectedItem && selectedItem.title}</span>
+                {
+                    active &&
+                    <div className={s.items}>
+                        {props.items.map(i => <div
+                            className={s.item + " " + (howeredItem === i ? s.selected : '')}
+                            onMouseEnter={() => {
+                                setHoveredElementValue(i.value)
+                            }}
+                            key={i.value}
+                            onClick={() => onItemClick(i.value)}
+                        >{i.title}
+                        </div>)}
+                    </div>
+                }
             </div>
+        </>
 
-            {/*</FormControl>*/}
-        </Box>
-    )
-}
+    );
+};
+export const Select = React.memo(SelectSecret)

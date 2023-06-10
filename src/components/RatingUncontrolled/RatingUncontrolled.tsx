@@ -1,11 +1,11 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 type propsType = {
     defaultValue?: number
     onChange: (value:number)=>void
 }
 
-export function RatingUncontrolled(props: propsType) {
+export function RatingUncontrolledSecret(props: propsType) {
 
     let [value, setValue] = useState(props.defaultValue ? props.defaultValue : 0)
 
@@ -39,3 +39,4 @@ function Star(props: StarPropsType) {
         </span>
     )
 }
+export const RatingUncontrolled = React.memo(RatingUncontrolledSecret)

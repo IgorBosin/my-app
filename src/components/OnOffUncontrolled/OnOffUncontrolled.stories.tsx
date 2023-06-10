@@ -11,5 +11,4 @@ const callback = action('on or off clicked')
 
 export const OnUncontrolledStories = () => <OnOffUncontrolled defaultOn={true} onChange={callback}/>
 export const OffUncontrolledStories = () => <OnOffUncontrolled defaultOn={false} onChange={callback}/>
-export const DefaultInputValue = () => <input defaultValue={'yo'}/>
 

@@ -5,8 +5,8 @@ type OnOffPropsType = {
     setOnOff: (onOff: boolean) => void
 }
 
-export const OnOff = (props: OnOffPropsType) => {
-
+export const OnOffSecret = (props: OnOffPropsType) => {
+    console.log('render OnOff')
     const onStyle = {
         padding: '3px',
         background: props.onOff ? "green" : "white",
@@ -50,3 +50,4 @@ export const OnOff = (props: OnOffPropsType) => {
 
     );
 };
+export const OnOff = React.memo(OnOffSecret)

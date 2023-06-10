@@ -10,7 +10,6 @@ type stateType = {
 export const AccordionReducer = (state: stateType, action: ActionType): stateType => {
     switch (action.type) {
         case TOGGLE_CONSTANT:
-            debugger
             return {...state, collaps: !state.collaps}
         default:
             throw new Error('NONE')
