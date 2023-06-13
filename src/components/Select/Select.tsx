@@ -1,19 +1,21 @@
-import React, {useState, KeyboardEvent, useEffect} from 'react';
+import React, {useState, KeyboardEvent, useEffect, memo} from 'react';
 import s from './Select.module.css'
 
-type ItemType = {
+export type ItemType = {
     title: string
     value: any
+    population: number
 }
 
 type Select2PropsType = {
     value?: any
     onChange: (value: any) => void
     items: ItemType[]
+    log: string
 }
 
 export const SelectSecret = (props: Select2PropsType) => {
-    console.log('render Select')
+    console.log(props.log)
 
     const [active, setActive] = useState(true)
     const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
@@ -77,4 +79,4 @@ export const SelectSecret = (props: Select2PropsType) => {
 
     );
 };
-export const Select = React.memo(SelectSecret)
+export const Select = memo(SelectSecret)

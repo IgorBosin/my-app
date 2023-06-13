@@ -15,10 +15,10 @@ export const itemsForAccordion1 = [
     {title: 'Leha', value: 3},
 ]
 
-export const itemsForSelect = [
-    {title: 'Moscow', value: 1},
-    {title: 'Piter', value: 2},
-    {title: 'Perm', value: 3},
+const itemsForSelect = [
+    {value: '1', title: 'Minsk', population: 44},
+    {value: '2', title: 'Moskow', population: 9},
+    {value: '3', title: 'Kiev', population: 143},
 ]
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
     return (
         <div>
             {/*<Select1 collapsed={collapsed} setCollapsed={setCollapsed} items={itemsForSelect}/>*/}
-            <Select value={selectValue} onChange={setSelectValue} items={itemsForSelect}/>
+            <Select log={'render Select'} value={selectValue} onChange={setSelectValue} items={itemsForSelect}/>
             <OnOff onOff={onOff}  setOnOff={setOnOff}/>
             <Accordion onClickItems={onClickItems} items={itemsForAccordion} titleValue={'Menu'} setCollapsed={setCollapsed} collapsed={collapsed}/>
             <Rating ratingValue={ratingValue} setRatingValue={setRatingValue}/>
