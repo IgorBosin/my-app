@@ -2,8 +2,7 @@ import React, {useRef, RefObject, useState, ChangeEvent} from "react";
 import {action} from "@storybook/addon-actions";
 
 export default {
-    title: 'Input',
-    // component: OnOff,
+    title: 'Input stories',
 }
 
 export const UncontrolledInput = () => <input/>

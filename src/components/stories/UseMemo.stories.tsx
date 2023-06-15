@@ -2,7 +2,7 @@ import {ChangeEvent, useMemo, useState} from "react";
 import React from 'react'
 
 export default {
-    title: 'UseMemo',
+    title: 'UseMemo stories',
 }
 
 export const DifficultCountingExample = () => {

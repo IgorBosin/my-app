@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default {
-    title: 'React.memo',
+    title: 'React.memo stories',
 }
 type UsersType = {
     user: string[]

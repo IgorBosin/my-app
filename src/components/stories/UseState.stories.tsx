@@ -2,7 +2,7 @@ import {useMemo, useState} from "react";
 import React from 'react'
 
 export default {
-    title: 'UseState',
+    title: 'UseState stories',
 }
 
 const generationData = () => {

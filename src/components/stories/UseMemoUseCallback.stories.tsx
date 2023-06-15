@@ -2,7 +2,7 @@ import {useCallback, useMemo, useState} from "react";
 import React from 'react'
 
 export default {
-    title: 'UseMemoUseCallback',
+    title: 'UseMemoUseCallback stories',
 }
 
 export const LikeUseCallback = () => {

@@ -1,8 +1,8 @@
-import {ChangeEvent, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import React from 'react'
 
 export default {
-    title: 'UseMemo2',
+    title: 'UseMemo2 stories',
 }
 
 const UsersWithoutMemo = (props: { user: string[] }) => {
