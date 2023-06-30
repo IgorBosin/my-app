@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 350px;
+    width: 250px;
+}
+
+.title {
+    font-size: 140%;
+    font-weight: bold;
+}
+
+.clock {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://flomaster.club/uploads/posts/2023-01/thumbs/1672944107_flomaster-club-p-trafaret-tsiferblata-chasov-oboi-6.jpg'),
+    radial-gradient(circle, rgb(37, 73, 90) 0%, rgb(25, 48, 60) 11%, rgba(9, 25, 33, 1) 38%);
+    background-size: cover;
+    box-shadow: 0 -15px 15px rgba(134, 134, 134, 0.35), inset 0 -5px 15px black,
+    0 15px 15px rgba(134, 134, 134, 0.35), inset 0 5px 15px black;
+    border-radius: 50%;
+}
+
+.clock:before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 999;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+    position: absolute;
+}
+
+.clock .hour, .hr {
+    width: 160px;
+    height: 160px;
+}
+
+.clock .min, .mn {
+    width: 190px;
+    height: 190px;
+}
+
+.clock .sec, .sc {
+    width: 230px;
+    height: 230px;
+}
+
+.hr, .mn, .sc {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hr:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background-color: black;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.mn:before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background-color: black;
+    z-index: 11;
+    border-radius: 50%;
+}
+
+.sc:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background-color: darkkhaki;
+    z-index: 12;
+    border-radius: 50%;
+}

@@ -34,7 +34,7 @@ function App() {
     const onClickItems = useCallback(() => console.log('on click items'), [])
 
     return (
-        <div>
+        <div className={'App'}>
             {/*<Select1 collapsed={collapsed} setCollapsed={setCollapsed} items={itemsForSelect}/>*/}
             <Select log={'render Select'} value={selectValue} onChange={setSelectValue} items={itemsForSelect}/>
             <OnOff onOff={onOff}  setOnOff={setOnOff}/>
