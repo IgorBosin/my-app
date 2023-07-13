@@ -34,14 +34,15 @@ export const SimpleExample = () => {
     )
 }
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
     console.log('UseEffect demo')
     const [counter, setCounter] = useState(0)
     useEffect(() => {
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log(counter) // всегда 0, т.к берет counter из замыкания при первой отрисовке
             setCounter((state) => state + 1) // если прописать "counter+1" то берет counter из замыкания - всегда 0
         }, 1000)
+        return clearInterval(intervalId)
     }, [])
     useEffect(() => {
         setTimeout(() => document.title = counter.toString(), 1000)
@@ -77,4 +78,64 @@ export const SetTimeoutExample = () => {
             <h2>{time.toLocaleTimeString()}</h2>
         </div>
     )
+}
+
+export const ResetEffectExample = () => {
+    let [counter, setCounter] = useState(0)
+    console.log('counter in ResetEffectExample: ' + counter)
+
+    useEffect(() => {
+        console.log('counter in useEffect: ' + counter)
+        const intervalId = setInterval(() => {
+            console.log('counter in setInterval =' + counter)
+            setCounter(state => state + 1)
+        }, 3000)
+        return () => {
+            clearInterval(intervalId)
+            console.log('Effect stopped: ' + counter)
+        }
+    }, [])
+
+    return <div>
+        Hello, counter: {counter}
+    </div>
+}
+
+export const ResetAddEventListener = () => {
+    let [text, setText] = useState('')
+    console.log('text in ResetAddEventListener: ' + text)
+
+    useEffect(() => {
+
+        const handler = (e: KeyboardEvent) => {
+            console.log('text in ResetAddEventListener: ' + e.key)
+            setText(state => state + e.key) //либо (text + e.key), но в массив зависимостей [text]
+        }
+
+        window.addEventListener('keypress', handler)
+
+        return () => {
+            window.removeEventListener('keypress', handler) // если не отписаться, то при переходе на другую страницу
+        } // будет срабатывать 'keypress', а если открыть и закрыть эту компоненту 5 раз, то создастся 5 useEffect'ов
+    }, [])
+
+    return <div>
+        Typed text: {text}
+    </div>
+}
+
+export const SetTimeoutExample = () => {
+    let [text, setText] = useState('')
+
+    useEffect(() => {
+        const intervalId = setTimeout(() => {
+            console.log('Timeout expired')
+            setText('proshlo 3 secunds')
+        }, 3000)
+        return ()=>clearTimeout(intervalId)
+    }, [])
+
+    return <div>
+        Typed text: {text}
+    </div>
 }
